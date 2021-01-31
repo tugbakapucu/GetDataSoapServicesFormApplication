@@ -35,37 +35,42 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(170, 67);
+            this.button1.Location = new System.Drawing.Point(191, 84);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 41);
+            this.button1.Size = new System.Drawing.Size(184, 51);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Getir";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(54, 131);
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(61, 164);
+            this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(420, 292);
+            this.listView1.Size = new System.Drawing.Size(472, 364);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(151, 28);
+            this.textBox1.Location = new System.Drawing.Point(170, 35);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 22);
+            this.textBox1.Size = new System.Drawing.Size(227, 26);
             this.textBox1.TabIndex = 2;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 435);
+            this.ClientSize = new System.Drawing.Size(547, 544);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
