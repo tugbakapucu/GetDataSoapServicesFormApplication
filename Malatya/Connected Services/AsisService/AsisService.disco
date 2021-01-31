@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://asis-services.com/AsisService/AsisService.asmx?wsdl" docRef="https://asis-services.com/AsisService/AsisService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://asis-services.com/AsisService/AsisService.asmx" xmlns:q1="https://asis-services.com/" binding="q1:AsisServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://asis-services.com/AsisService/AsisService.asmx" xmlns:q2="https://asis-services.com/" binding="q2:AsisServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

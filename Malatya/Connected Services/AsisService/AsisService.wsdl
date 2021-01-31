@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://asis-services.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://asis-services.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://asis-services.com/">
+      <s:element name="StopsStations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lineCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopsStationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StopsStationsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="data">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="result" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSRequestHeader" type="tns:WSRequestHeader" />
+      <s:complexType name="WSRequestHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="Lines">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinesResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LineDirections">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lineCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LineDirectionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineDirectionsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DepartingTimes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lineCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="departingDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DepartingTimesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DepartingTimesResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealTimeData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lineCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealTimeDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RealTimeDataResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lineCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RealDataResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Schedules">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lineCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="scheduleDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SchedulesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SchedulesResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckBalanceResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckCurrentRoute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="plate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckCurrentRouteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckCurrentRouteResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PointOfSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PointOfSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PointOfSaleResult" type="tns:ApiResponseOfPointOfSaleResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApiResponseOfPointOfSaleResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ArrayOfPointOfSaleResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPointOfSaleResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PointOfSaleResult" nillable="true" type="tns:PointOfSaleResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PointOfSaleResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="latitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lontitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="posCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Cico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tripId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CicoResult" type="tns:ApiResponseOfCicoResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApiResponseOfCicoResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ArrayOfCicoResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCicoResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CicoResult" nillable="true" type="tns:CicoResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CicoResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CheckIn" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CheckOut" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RouteCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StopOrderId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Pricetable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lineCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PricetableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PricetableResult" type="tns:ApiResponseOfPricetableResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApiResponseOfPricetableResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ArrayOfPricetableResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPricetableResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PricetableResult" nillable="true" type="tns:PricetableResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PricetableResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="aciklama" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fiyat" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="hatKodu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="karttipi" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RawData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="valRecordId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RawDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RawDataResult" type="tns:ApiResponseOfRawDataResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApiResponseOfRawDataResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ArrayOfRawDataResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRawDataResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RawDataResult" nillable="true" type="tns:RawDataResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RawDataResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CardType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deduct" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="GrupCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InsertDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="RouteCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TripId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TotalProceed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="firstDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TotalProceedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TotalProceedResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="StopsStationsSoapIn">
+    <wsdl:part name="parameters" element="tns:StopsStations" />
+  </wsdl:message>
+  <wsdl:message name="StopsStationsSoapOut">
+    <wsdl:part name="parameters" element="tns:StopsStationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopsStationsWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="LinesSoapIn">
+    <wsdl:part name="parameters" element="tns:Lines" />
+  </wsdl:message>
+  <wsdl:message name="LinesSoapOut">
+    <wsdl:part name="parameters" element="tns:LinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinesWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="LineDirectionsSoapIn">
+    <wsdl:part name="parameters" element="tns:LineDirections" />
+  </wsdl:message>
+  <wsdl:message name="LineDirectionsSoapOut">
+    <wsdl:part name="parameters" element="tns:LineDirectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LineDirectionsWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="DepartingTimesSoapIn">
+    <wsdl:part name="parameters" element="tns:DepartingTimes" />
+  </wsdl:message>
+  <wsdl:message name="DepartingTimesSoapOut">
+    <wsdl:part name="parameters" element="tns:DepartingTimesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DepartingTimesWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="RealTimeDataSoapIn">
+    <wsdl:part name="parameters" element="tns:RealTimeData" />
+  </wsdl:message>
+  <wsdl:message name="RealTimeDataSoapOut">
+    <wsdl:part name="parameters" element="tns:RealTimeDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="RealTimeDataWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="RealDataSoapIn">
+    <wsdl:part name="parameters" element="tns:RealData" />
+  </wsdl:message>
+  <wsdl:message name="RealDataSoapOut">
+    <wsdl:part name="parameters" element="tns:RealDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="RealDataWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="SchedulesSoapIn">
+    <wsdl:part name="parameters" element="tns:Schedules" />
+  </wsdl:message>
+  <wsdl:message name="SchedulesSoapOut">
+    <wsdl:part name="parameters" element="tns:SchedulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SchedulesWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="CheckBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckBalance" />
+  </wsdl:message>
+  <wsdl:message name="CheckBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckBalanceWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="CheckCurrentRouteSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckCurrentRoute" />
+  </wsdl:message>
+  <wsdl:message name="CheckCurrentRouteSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckCurrentRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckCurrentRouteWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="PointOfSaleSoapIn">
+    <wsdl:part name="parameters" element="tns:PointOfSale" />
+  </wsdl:message>
+  <wsdl:message name="PointOfSaleSoapOut">
+    <wsdl:part name="parameters" element="tns:PointOfSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="PointOfSaleWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="CicoSoapIn">
+    <wsdl:part name="parameters" element="tns:Cico" />
+  </wsdl:message>
+  <wsdl:message name="CicoSoapOut">
+    <wsdl:part name="parameters" element="tns:CicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CicoWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="PricetableSoapIn">
+    <wsdl:part name="parameters" element="tns:Pricetable" />
+  </wsdl:message>
+  <wsdl:message name="PricetableSoapOut">
+    <wsdl:part name="parameters" element="tns:PricetableResponse" />
+  </wsdl:message>
+  <wsdl:message name="PricetableWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="RawDataSoapIn">
+    <wsdl:part name="parameters" element="tns:RawData" />
+  </wsdl:message>
+  <wsdl:message name="RawDataSoapOut">
+    <wsdl:part name="parameters" element="tns:RawDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="RawDataWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="TotalProceedSoapIn">
+    <wsdl:part name="parameters" element="tns:TotalProceed" />
+  </wsdl:message>
+  <wsdl:message name="TotalProceedSoapOut">
+    <wsdl:part name="parameters" element="tns:TotalProceedResponse" />
+  </wsdl:message>
+  <wsdl:message name="TotalProceedWSRequestHeader">
+    <wsdl:part name="WSRequestHeader" element="tns:WSRequestHeader" />
+  </wsdl:message>
+  <wsdl:portType name="AsisServiceSoap">
+    <wsdl:operation name="StopsStations">
+      <wsdl:input message="tns:StopsStationsSoapIn" />
+      <wsdl:output message="tns:StopsStationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lines">
+      <wsdl:input message="tns:LinesSoapIn" />
+      <wsdl:output message="tns:LinesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LineDirections">
+      <wsdl:input message="tns:LineDirectionsSoapIn" />
+      <wsdl:output message="tns:LineDirectionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DepartingTimes">
+      <wsdl:input message="tns:DepartingTimesSoapIn" />
+      <wsdl:output message="tns:DepartingTimesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RealTimeData">
+      <wsdl:input message="tns:RealTimeDataSoapIn" />
+      <wsdl:output message="tns:RealTimeDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RealData">
+      <wsdl:input message="tns:RealDataSoapIn" />
+      <wsdl:output message="tns:RealDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Schedules">
+      <wsdl:input message="tns:SchedulesSoapIn" />
+      <wsdl:output message="tns:SchedulesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckBalance">
+      <wsdl:input message="tns:CheckBalanceSoapIn" />
+      <wsdl:output message="tns:CheckBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckCurrentRoute">
+      <wsdl:input message="tns:CheckCurrentRouteSoapIn" />
+      <wsdl:output message="tns:CheckCurrentRouteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PointOfSale">
+      <wsdl:input message="tns:PointOfSaleSoapIn" />
+      <wsdl:output message="tns:PointOfSaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Cico">
+      <wsdl:input message="tns:CicoSoapIn" />
+      <wsdl:output message="tns:CicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Pricetable">
+      <wsdl:input message="tns:PricetableSoapIn" />
+      <wsdl:output message="tns:PricetableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RawData">
+      <wsdl:input message="tns:RawDataSoapIn" />
+      <wsdl:output message="tns:RawDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TotalProceed">
+      <wsdl:input message="tns:TotalProceedSoapIn" />
+      <wsdl:output message="tns:TotalProceedSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AsisServiceSoap" type="tns:AsisServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StopsStations">
+      <soap:operation soapAction="https://asis-services.com/StopsStations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:StopsStationsWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lines">
+      <soap:operation soapAction="https://asis-services.com/Lines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LinesWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineDirections">
+      <soap:operation soapAction="https://asis-services.com/LineDirections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LineDirectionsWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepartingTimes">
+      <soap:operation soapAction="https://asis-services.com/DepartingTimes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DepartingTimesWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealTimeData">
+      <soap:operation soapAction="https://asis-services.com/RealTimeData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RealTimeDataWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealData">
+      <soap:operation soapAction="https://asis-services.com/RealData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RealDataWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Schedules">
+      <soap:operation soapAction="https://asis-services.com/Schedules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SchedulesWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckBalance">
+      <soap:operation soapAction="https://asis-services.com/CheckBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CheckBalanceWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCurrentRoute">
+      <soap:operation soapAction="https://asis-services.com/CheckCurrentRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CheckCurrentRouteWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PointOfSale">
+      <soap:operation soapAction="https://asis-services.com/PointOfSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PointOfSaleWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cico">
+      <soap:operation soapAction="https://asis-services.com/Cico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CicoWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pricetable">
+      <soap:operation soapAction="https://asis-services.com/Pricetable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PricetableWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RawData">
+      <soap:operation soapAction="https://asis-services.com/RawData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RawDataWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TotalProceed">
+      <soap:operation soapAction="https://asis-services.com/TotalProceed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TotalProceedWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AsisServiceSoap12" type="tns:AsisServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StopsStations">
+      <soap12:operation soapAction="https://asis-services.com/StopsStations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:StopsStationsWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lines">
+      <soap12:operation soapAction="https://asis-services.com/Lines" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LinesWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineDirections">
+      <soap12:operation soapAction="https://asis-services.com/LineDirections" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LineDirectionsWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepartingTimes">
+      <soap12:operation soapAction="https://asis-services.com/DepartingTimes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DepartingTimesWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealTimeData">
+      <soap12:operation soapAction="https://asis-services.com/RealTimeData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RealTimeDataWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealData">
+      <soap12:operation soapAction="https://asis-services.com/RealData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RealDataWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Schedules">
+      <soap12:operation soapAction="https://asis-services.com/Schedules" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SchedulesWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckBalance">
+      <soap12:operation soapAction="https://asis-services.com/CheckBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CheckBalanceWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCurrentRoute">
+      <soap12:operation soapAction="https://asis-services.com/CheckCurrentRoute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CheckCurrentRouteWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PointOfSale">
+      <soap12:operation soapAction="https://asis-services.com/PointOfSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PointOfSaleWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cico">
+      <soap12:operation soapAction="https://asis-services.com/Cico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CicoWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pricetable">
+      <soap12:operation soapAction="https://asis-services.com/Pricetable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PricetableWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RawData">
+      <soap12:operation soapAction="https://asis-services.com/RawData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RawDataWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TotalProceed">
+      <soap12:operation soapAction="https://asis-services.com/TotalProceed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TotalProceedWSRequestHeader" part="WSRequestHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AsisService">
+    <wsdl:port name="AsisServiceSoap" binding="tns:AsisServiceSoap">
+      <soap:address location="https://asis-services.com/AsisService/AsisService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AsisServiceSoap12" binding="tns:AsisServiceSoap12">
+      <soap12:address location="https://asis-services.com/AsisService/AsisService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
