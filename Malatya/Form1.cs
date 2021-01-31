@@ -29,8 +29,8 @@ namespace Malatya
             httpBinding.SendTimeout = new TimeSpan(0, 3, 0);
 
             WSRequestHeader hd = new WSRequestHeader();
-            hd.Username = "teknarteknoloji";
-            hd.Password = "6rQf8k65";
+            hd.Username = "UserName";
+            hd.Password = "Password";
 
             //Soap  servis get values
             using (var s = new DenemeServiceSoapClient(httpBinding, new EndpointAddress("ServisUrl")))
