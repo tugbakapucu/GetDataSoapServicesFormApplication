@@ -33,7 +33,7 @@ namespace Malatya
             hd.Password = "6rQf8k65";
 
             //Soap  servis get values
-            using (var s = new AsisServiceSoapClient(httpBinding, new EndpointAddress("ServisUrl")))
+            using (var s = new DenemeServiceSoapClient(httpBinding, new EndpointAddress("ServisUrl")))
             {
                 try
                 {
